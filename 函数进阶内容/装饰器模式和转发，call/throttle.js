@@ -2,6 +2,11 @@ function f(a) {
   console.log(a);
 }
 
+/**
+ * 一直的调用函数 则只会每dTime调用一次函数
+ * @param {*} fnc 
+ * @param {*} dTime 
+ */
 function throttle(fnc, dTime) {
   let _this
   let arg
