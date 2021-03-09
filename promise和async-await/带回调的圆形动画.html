@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圆形动画</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .circle {
+      transition-property: width, height, margin-left, margin-top;
+      transition-duration: 2s;
+      position: fixed;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: red;
+      border-radius: 50%;
+
+      /* transition: all 10s; */
+      width: 200px;
+      height: 200px;
+      top: 150px;
+      left: 150px;
+    }
+    /* .circle:hover {
+      width: 400px;
+      height: 400px;
+    } */
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+
+  <script>
+    window.onload = () => {
+      function showCircle (x, y, radius, callback) {
+        const circle = document.querySelector('.circle')
+        console.log(circle)
+  
+        circle.style.left = x + 'px'
+        circle.style.top = y + 'px'
+        circle.style.width = radius * 2 + 'px'
+        circle.style.height = radius * 2 + 'px'
+
+        // 
+        circle.addEventListener('transitionend', function handler () {
+          circle.removeEventListener('transitionend', handler)
+          callback()
+        })
+      }
+  
+      showCircle(150, 150, 150, function () {
+        console.log(123)
+      })
+    }
+  </script>
+</body>
+</html>
