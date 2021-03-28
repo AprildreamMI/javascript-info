@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div data-widget-name="menu">Choose the genre</div>
+
+  <script>
+    /* your code */
+    for (const div of document.querySelectorAll('[data-widget-name]')) {
+      let value = div.dataset.widgetName
+      console.log(value)
+    }
+  </script>
+</body>
+</html>

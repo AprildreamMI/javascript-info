@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div show-info="name" about="Elephant"></div>
+
+  <div show-info="age"></div>
+
+  <script>
+    let user = {
+      name: 'Pete',
+      age: 25
+    }
+
+    for (let div of document.querySelectorAll('[show-info]')) {
+      let field = div.getAttribute('show-info')
+      console.log(div['about'])
+
+      div.innerHTML = user[field]
+    }
+    
+
+  </script>
+</body>
+</html>
