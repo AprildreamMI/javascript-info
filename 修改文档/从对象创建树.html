@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="container"></div>
+  <div id="container2"></div>
+
+  <script>
+    let data = {
+      "Fish": {
+        "trout": {},
+        "salmon": {}
+      },
+      "Awd": '',
+
+      "Tree": {
+        "Huge": {
+          "sequoia": {},
+          "oak": {}
+        },
+        "Flowering": {
+          "apple tree": {},
+          "magnolia": {}
+        }
+      }
+    }
+    // 创建树
+    function createTree (el, data) {
+      if (!(el && data)) return
+      const ul = document.createElement('ul')
+      el.append(ul)
+      if (typeof(data) === 'object') {
+        for (const key in data) {
+          let li = document.createElement('li')
+          li.textContent = key
+          ul.append(li)
+
+          createTree(li, data[key])
+        }
+      } else {
+        let li = document.createElement('li')
+        li.textContent = key
+        ul.append(li)
+      }
+    }
+    // 创建树
+    function createTreeTxt (data) {
+      if (!data) return ''
+      let li = ''
+      let ul = ''
+
+      for (const key in data) {
+        li += `<li>${key}${createTreeTxt(data[key])}</li>`
+      }
+
+      if (li) {
+        ul = `<ul>${li}</ul>`
+      }
+
+      return ul
+
+    }
+    function createTree2 (el) {
+      el.innerHTML = createTreeTxt(data)
+    }
+
+    let container = document.getElementById('container');
+    let container2 = document.getElementById('container2');
+    createTree(container, data); // 将树创建在 container 中
+    createTree2(container2, data); // 将树创建在 container 中
+
+      /* let isEmpty = JSON.stringify(data) === '{}'
+  // 如果是空对象的话则单个处理
+  if (isEmpty) {
+
+  } else {
+
+  } */
+
+  </script>
+</body>
+</html>

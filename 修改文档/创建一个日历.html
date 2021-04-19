@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建一个日历</title>
+</head>
+<body>
+  <div id="cal"></div>
+
+  <script>
+    let weekdayList = [
+      'Sunday',
+      'Monday', 
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday'
+    ]
+    function createCalendar(ele, year, month) {
+      const date = new Date(year, month, 0)
+      const table = document.createElement('table')
+      const tbody = document.createElement('tbody')
+      
+      weekdayList.forEach(item => {
+        
+      })
+
+
+      // 获得到这个月份多少天
+      const dayCount = date.getDate()
+      for (let index = 1; index <= dayCount; index++) {
+        const dayDate = new Date(year, month - 1, index)
+        const weekday = dayDate.getDay()
+      }
+    }
+
+    const cal = document.querySelector('#cal')
+    createCalendar(cal, 2012, 9)
+  </script>
+</body>
+</html>
