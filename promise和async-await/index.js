@@ -47,3 +47,65 @@ p.then(res => {
 }).catch(error => {
   console.log(error)
 })
+
+
+function loadJson1(url) {
+  return fetch(url)
+    .then(response => {
+      if (response.status == 200) {
+        return response.json();
+      } else {
+        throw new Error(response.status);
+      }
+    });
+}
+
+
+async function loadScript(url) {
+  try {
+    let result = await fetch(url)
+    return result
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+
+// 询问用户名，直到 github 返回一个合法的用户
+function demoGithubUser1() {
+  let name = prompt("Enter a name?", "iliakan");
+
+  return loadJson(`https://api.github.com/users/${name}`)
+    .then(user => {
+      alert(`Full name: ${user.name}.`);
+      return user;
+    })
+    .catch(err => {
+      if (err instanceof HttpError && err.response.status == 404) {
+        alert("No such user, please reenter.");
+        return demoGithubUser();
+      } else {
+        throw err;
+      }
+    });
+}
+
+// 询问用户名，直到 github 返回一个合法的用户
+async function demoGithubUser() {
+  let user
+  do {
+    let name = prompt("Enter a name?", "iliakan");
+
+    try {
+      let user = loadJson(`https://api.github.com/users/${name}`)
+      alert(`Full name: ${user.name}.`);
+      return user
+    } catch (err) {
+      if (err instanceof HttpError && err.response.status == 404) {
+        alert("No such user, please reenter.");
+      } else {
+        throw err;
+      }
+    }
+  } while (!user)
+}

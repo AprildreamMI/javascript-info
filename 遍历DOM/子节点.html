@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div>Users:</div>
+    <ul>
+      <li>John</li>
+      <li>Pete</li>
+    </ul>
+  </ul>
+
+  <div id="elem1"></div>
+  <div id="elem2"></div>
+
+  <script>
+    const [user, list] = document.body.children
+    console.log(user, list)
+    console.log(user, list.children[1])
+  </script>
+
+  <script>
+    let elem1 = document.querySelector('#elem1')
+    let elem2 = document.querySelector('#elem2')
+
+    let str = prompt("What's your name?", "<b>Winnie-the-Pooh!</b>");
+
+    elem1.innerHTML = str
+    elem2.textContent = str
+
+    setTimeout(() => {
+      elem1.hidden = true
+    }, 2000)
+  </script>
+</body>
+</html>
