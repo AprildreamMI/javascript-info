@@ -5,40 +5,95 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>创建一个日历</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    table {
+      border-collapse:collapse
+    }
+    th {
+      font-weight: bold;
+      background-color: #E6E6E6;
+    }
+    td, th {
+      border: 1px solid #333;
+    }
+  </style>
 </head>
 <body>
   <div id="cal"></div>
 
   <script>
     let weekdayList = [
-      'Sunday',
       'Monday', 
       'Tuesday',
       'Wednesday',
       'Thursday',
       'Friday',
-      'Saturday'
+      'Saturday',
+      'Sunday',
     ]
     function createCalendar(ele, year, month) {
+      // 得到此年此月最后一天
       const date = new Date(year, month, 0)
       const table = document.createElement('table')
       const tbody = document.createElement('tbody')
-      
+
+      // 表头
+      const tr = document.createElement('tr')
       weekdayList.forEach(item => {
-        
+        const th = document.createElement('th')
+        th.textContent = item
+        tr.append(th)
       })
+      tbody.append(tr)
 
 
       // 获得到这个月份多少天
       const dayCount = date.getDate()
+      const dayList = []
       for (let index = 1; index <= dayCount; index++) {
         const dayDate = new Date(year, month - 1, index)
-        const weekday = dayDate.getDay()
+        const weekday = dayDate.getDay() - 1
+        dayList.push({
+          date: dayDate,
+          weekday: weekday === -1 ? 6 : weekday,
+          index
+        })
       }
+
+      // 获取多少行
+      const spaceTdCount = dayList[0].weekday
+      const totalTd = dayCount + spaceTdCount
+      const shang = parseInt(totalTd / 7)
+      const yu = totalTd % 7
+      const hrCount = shang + (yu ? 1 : 0)
+      console.log(dayList, hrCount)
+      for (let i = 1; i <= hrCount; i++) {
+        const tr = document.createElement('tr')
+        for (let j = 1; j <= 7; j++) {
+          const td = document.createElement('td')
+          tr.append(td)
+          const c = j + (i - 1) * 7 - 1
+          const cha = c - spaceTdCount
+          if (cha < 0 || cha >= dayList.length) continue
+          td.textContent = dayList[cha].index
+        }        
+        tbody.append(tr)
+      }
+
+
+      // 挂载
+      table.append(tbody)
+      ele.append(table)
     }
 
     const cal = document.querySelector('#cal')
-    createCalendar(cal, 2012, 9)
+    createCalendar(cal, 2021, 5)
+    // createCalendar(cal, 2012, 9)
   </script>
 </body>
 </html>

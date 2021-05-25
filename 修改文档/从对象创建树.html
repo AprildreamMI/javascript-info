@@ -33,6 +33,7 @@
     // 创建树
     function createTree (el, data) {
       if (!(el && data)) return
+      if (typeof(data) === 'object' && Object.keys(data).length === 0) return
       const ul = document.createElement('ul')
       el.append(ul)
       if (typeof(data) === 'object') {
@@ -45,7 +46,7 @@
         }
       } else {
         let li = document.createElement('li')
-        li.textContent = key
+        li.textContent = data
         ul.append(li)
       }
     }
