@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .date_box span:nth-child(1) {
+      color: red;
+    }
+    .date_box span:nth-child(2) {
+      color: green;
+    }
+    .date_box span:nth-child(3) {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="date_box">
+
+  </div>
+  <script>
+    const dateBox = document.querySelector('.date_box')
+    function getDate () {
+      const date = new Date()
+      let h = date.getHours()
+      let m = date.getMinutes()
+      let s = date.getSeconds()
+
+
+      h = h >= 10 ? h : `0${h}`
+      m = m >= 10 ? m : `0${m}`
+      s = s >= 10 ? s : `0${s}`
+
+      let hEl = `<span>${h}</span>`
+      let mEl = `<span>${m}</span>`
+      let sEl = `<span>${s}</span>`
+
+      let dateContent = `${hEl}:${mEl}:${sEl}`
+
+      return dateContent
+    }
+
+    setInterval(() => {
+      const elHtml = getDate()
+      dateBox.innerHTML = elHtml
+    }, 1000);
+  </script>
+</body>
+</html>

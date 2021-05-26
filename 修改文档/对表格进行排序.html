@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th><th>Surname</th><th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td><td>Smith</td><td>10</td>
+      </tr>
+      <tr>
+        <td>Pete</td><td>Brown</td><td>15</td>
+      </tr>
+      <tr>
+        <td>Ann</td><td>Lee</td><td>5</td>
+      </tr>
+      <tr>
+        <td>...</td><td>...</td><td>...</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const table = document.querySelector('table')
+    const tbody = table.querySelector('tbody')
+
+    // console.log(table, table.rows[1].cells[0])
+
+    const trList = Array.from(tbody.children)
+
+    trList.sort((a, b) => {
+      let pattern = /^[A-Za-z]+$/
+      let aName = a.children[0].textContent
+      let bName = b.children[0].textContent
+
+      let pA = pattern.test(aName)
+      let pB = pattern.test(bName)
+
+      if (!pA) {
+        return 1
+      }
+      if (!pB) {
+        return -1
+      }
+      if (aName < bName) {
+        return -1
+      } else {
+        return 1
+      }
+    })
+
+    console.log('trList', trList)
+
+/*     const nameColList = []
+
+    for (const el of trList) {
+      nameColList.push(el.children[0])
+    } */
+    // console.log(nameColList)
+
+    for (const el of tbody.children) {
+      el.remove()
+    }
+    tbody.append(...trList)
+  </script>
+</body>
+</html>
