@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .scrollBox {
+      width: 300px;
+      height: 200px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="scrollBox">
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+  </div>
+
+  <script>
+    const scrollBox = document.querySelector('.scrollBox')
+
+    function getScrollBottom (el) {
+      const scrollHeight = el.scrollHeight
+      const scrollTop = el.scrollTop
+      const clientHeight = el.clientHeight
+
+      console.log(scrollHeight, scrollTop)
+
+      return scrollTop ? scrollHeight - scrollTop - clientHeight : 0
+    }
+
+    getScrollBottom(scrollBox)
+
+    scrollBox.addEventListener('scroll', () => {
+      const scrollBottom = getScrollBottom(scrollBox)
+
+      console.log('scrollBottom', scrollBottom)
+    })
+  </script>
+</body>
+</html>

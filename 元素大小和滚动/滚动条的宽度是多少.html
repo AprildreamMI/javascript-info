@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .scrollBox {
+      width: 300px;
+      height: 200px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="scrollBox">
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+    <p>text text text text text text text text</p>
+  </div>
+
+  <script>
+    const scrollBox = document.querySelector('.scrollBox')
+    const offsetWidth = scrollBox.offsetWidth
+    const clientWidth = scrollBox.clientWidth
+
+    const styleProp = getComputedStyle(scrollBox)
+    const borderRightWidth = parseInt(styleProp.borderRightWidth)
+    const borderLeftWidth = parseInt(styleProp.borderLeftWidth)
+
+    const borderWidth = borderRightWidth + borderLeftWidth
+
+    const scrollWidth = offsetWidth - (clientWidth - borderWidth)
+
+    console.log('scrollWidth', scrollWidth)
+  </script>
+</body>
+</html>
