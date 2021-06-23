@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    #field {
+      width: 200px;
+      border: 10px groove black;
+      background-color: #00FF00;
+      position: relative;
+    }
+
+    #ball {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div id="field">
+    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+  <script>
+    const fieldEl = document.querySelector('#field')
+    const ballEl = document.querySelector('#ball') 
+
+    let fieldElW = fieldEl.clientWidth
+    let fieldElH = fieldEl.clientHeight
+
+    console.log(ballEl.offsetWidth)
+    console.log(ballEl.offsetHeight)
+
+    let ballElW = ballEl.offsetWidth
+    let ballElH = ballEl.offsetHeight
+
+    const centerX = fieldElW / 2 - ballElW / 2
+    const centerY = fieldElH / 2 - ballElH / 2
+
+    console.log(centerX, centerY)
+
+    ballEl.style.left = centerX + 'px'
+    ballEl.style.top = centerY + 'px'
+
+    console.log(ballEl.offsetLeft, ballEl.offsetTop)
+
+  </script>
+</body>
+
+</html>
