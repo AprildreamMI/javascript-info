@@ -34,8 +34,22 @@
   </script>
   <script>
     const fieldEl = document.querySelector('#field')
-
     const elCoords = fieldEl.getBoundingClientRect()
+    const fieldElBorderW = parseInt(getComputedStyle(fieldEl).borderWidth)
+
+    const cX = elCoords.x
+    const cY = elCoords.y
+    const cR = elCoords.right
+    const cB = elCoords.bottom
+
+    const r1 = `${cX}:${cY}`
+    console.log('r1', r1)
+    const r3 = `${cX + fieldElBorderW}:${cY + fieldElBorderW}`
+    console.log('r3', r3)
+    const r2 = `${cR}:${cB}`
+    console.log('r2', r2)
+    const r4 = `${cR - fieldElBorderW}:${cB - fieldElBorderW}`
+    console.log('r4', r4)
 
     console.log('coords', elCoords)
 
