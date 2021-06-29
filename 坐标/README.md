@@ -45,6 +45,8 @@ bottom = y + height
 
 - 坐标可能是负数。例如滚动页面，使 `elem` 现在位于窗口的上方，则 `elem.getBoundingClientRect().top` 为负数。
 
+  当页面发生滚动时，top为次元素被卷出去的值，而不是page被卷出去的值，为负数
+
 ## [`elementFromPoint(x, y)`](https://zh.javascript.info/coordinates#elementFromPoint)
 
 对 `document.elementFromPoint(x, y)` 的调用会返回在窗口坐标 `(x, y)` 处嵌套最多（the most nested）的元素。
@@ -82,4 +84,23 @@ function getCoords(elem) {
   };
 }
 ```
+
+## 鼠标坐标
+
+```
+pageX: 页面X坐标位置
+pageY: 页面Y坐标位置
+screenX: 屏幕X坐标位置
+screenY: 屏幕Y坐标位置
+clientX: 鼠标的坐标到可视区域左侧的距离
+clientY: 鼠标的坐标到可视区域顶部的距离
+clientWidth：可视区域的宽度
+clientHeight：可视区域的高度
+offsetX：鼠标坐标到元素的左侧的距离
+offsetY：鼠标坐标到元素的顶部的距离
+```
+
+**offsetX和offsetY的值**不管box-sizing是border还是content，其值都是从内容块的右上角开始
+
+
 

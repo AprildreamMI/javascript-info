@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <input type="button" id="hider" onclick="hideTxt(event)" value="Click to hide the text" />
+
+  <div id="text">Text</div>
+
+  <script>
+    /* your code */
+    function hideTxt (e) {
+      text.style.display = 'none'
+      console.log(e)
+      e.currentTarget.style.display = 'none'
+    }
+  </script>
+
+</body>
+</html>
