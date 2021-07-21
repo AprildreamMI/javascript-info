@@ -100,7 +100,7 @@ offsetX：鼠标坐标到元素的左侧的距离
 offsetY：鼠标坐标到元素的顶部的距离
 ```
 
-**offsetX和offsetY的值**不管box-sizing是border还是content，其值都是从内容块的右上角开始
+**offsetX和offsetY的值**不管box-sizing是border还是content，其值都是**从内容区域，不包含边框，**的右上角开始
 
 
 

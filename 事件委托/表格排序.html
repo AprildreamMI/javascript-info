@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    table {
+       border-collapse: collapse;
+     }
+     th, td {
+       border: 1px solid black;
+       padding: 4px;
+     }
+     th {
+       cursor: pointer;
+     }
+     th:hover {
+       background: yellow;
+     }
+  </style>
+</head>
+
+<body>
+
+  <table id="grid">
+    <thead>
+      <tr>
+        <th data-type="number">Age</th>
+        <th data-type="string">Name</th>
+        <th data-type="number">Age2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>5</td>
+        <td>John</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Pete</td>
+        <td>33</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Ann</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Eugene</td>
+        <td>23</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Ilya</td>
+        <td>45</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const tableEl = document.querySelector('#grid')
+    const tableThEl = tableEl.querySelector('thead')
+
+    tableThEl.addEventListener('click', (e) => {
+      const thItemEl = e.target
+      const curThItemIndex = thItemEl.cellIndex
+      const type = thItemEl.dataset.type
+      const tbodyEl = tableEl.querySelector('tbody')
+      const tbodyChildren = tbodyEl.children
+      const tbodyChildrenArr = Array.from(tbodyEl.children)
+      if (type === 'number') {
+        tbodyChildrenArr.sort((a, b) => {
+          const aValue = parseInt(a.children[curThItemIndex].textContent)
+          const bValue = parseInt(b.children[curThItemIndex].textContent)
+          return aValue - bValue
+        })
+      } else if (type === 'string') {
+        tbodyChildrenArr.sort((a, b) => {
+          const aValue = a.children[curThItemIndex].textContent
+          const bValue = b.children[curThItemIndex].textContent
+          if (aValue > bValue) {
+            return 1
+          } else if (aValue < bValue) {
+            return -1
+          }
+        })
+      }
+
+      tbodyEl.append(...tbodyChildrenArr)
+    })
+
+
+  </script>
+
+</body>
+</html>
