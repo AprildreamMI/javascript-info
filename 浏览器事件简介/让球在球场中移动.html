@@ -46,8 +46,14 @@
     const ballHeight = 40
     
     fieldEl.addEventListener('click', (e) => {
-      if (e.target !== fieldEl) return
-      const { offsetX, offsetY } = e
+      let fieldCoords = fieldEl.getBoundingClientRect();
+      const { x, y } = fieldCoords
+      const { clientX, clientY } = e
+      const { clientTop, clientLeft } = fieldEl
+      let offsetX = clientX - clientLeft - x
+      let offsetY = clientY - clientTop - y
+
+      console.log(fieldCoords, e, offsetX, offsetY)
 
       const ballWidthHalf = ballWidth / 2
       const ballHeightHalf = ballHeight / 2

@@ -1,0 +1,35 @@
+<div id="menu">
+  <button data-action="save">Save</button>
+  <button data-action="load">Load</button>
+  <button data-action="search">Search</button>
+</div>
+
+<script>
+  class Menu {
+    constructor (elem) {
+      super()
+      elem.onclick = this.onClick.bind(this)
+    }
+
+    save () {
+      alert('save')
+    }
+    load () {
+      alert('loading')
+    }
+    search () {
+      alert('searching')
+    }
+
+    onClick (event) {
+      let action = event.target.dataset.action
+
+      if (action) {
+        this[action]()
+      }
+    }
+  }
+
+  new Menu(menu)
+
+</script>
