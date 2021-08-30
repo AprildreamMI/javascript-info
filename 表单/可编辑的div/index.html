@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <link type="text/css" rel="stylesheet" href="my.css">
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <ul>
+    <li>点击下面的这个 div 来进行编辑。</li>
+    <li>按 Enter 键或者通过 blur 来保存结果。</li>
+  </ul>
+
+  允许输入 HTML。
+
+  <div id="view" class="view">Text</div>
+
+  <script>
+    view.onclick = viewClick
+
+    function viewClick () {
+      const textArae = document.createElement('textarea')
+      textArae.value = view.textContent
+      textArae.classList.add('edit')
+      textArae.id = 'edit'
+
+      view.replaceWith(textArae)
+      textArae.onblur = textAreaBlur
+      textArae.focus()
+    }
+
+    function textAreaBlur () {
+      const div = document.createElement('div')
+      div.textContent = edit.value
+      div.classList.add('view')
+      div.id = 'view'
+
+      edit.replaceWith(div)
+      div.onclick = viewClick
+    }
+  </script>
+
+</body>
+</html>

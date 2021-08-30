@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+    body,
+    html {
+      /* height: 100%;
+      width: 100%; */
+      padding: 0;
+      margin: 0;
+    }
+
+    #matrix {
+      width: 400px;
+      margin: auto;
+      /* overflow: auto; */
+      text-align: justify;
+    }
+
+    #arrowTop {
+      display: none;
+      height: 9px;
+      width: 14px;
+      color: green;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+    }
+
+    #arrowTop::before {
+      content: '▲';
+    }
+
+  </style>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  <div id="arrowTop"></div>
+
+  <div id="matrix"> </div>
+
+
+  <script>
+    // ... your code ...
+
+    for (let i = 0; i < 500; i++) {
+      const p = document.createElement('p')
+      p.innerHTML = new Date()
+      matrix.append(p)
+    }
+
+    checkoutScrollTop()
+
+    function checkoutScrollTop () {
+      // console.dir(matrix)
+      // const scrollTop = matrix.scrollTop
+      const scrollTop = window.pageYOffset
+      console.log(scrollTop)
+      if (scrollTop >= 1000) {
+        arrowTop.style.display = 'block'
+      } else {
+        arrowTop.style.display = 'none'
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      let scrollTop = window.pageYOffset
+      console.log('scrollTop', scrollTop)
+      checkoutScrollTop()
+    })
+
+    arrowTop.addEventListener('click', () => {
+      console.log(1)
+      window.scrollTo(0,0)
+    })
+  </script>
+
+  
+
+</body>
+</html>

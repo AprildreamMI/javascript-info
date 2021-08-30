@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+<h1>Scroll me</h1>
+
+<script>
+  for (let index = 0; index < 30; index++) {
+    appendP()
+  }
+
+  function appendP () {
+    const p = document.createElement('p')
+    p.innerHTML = new Date()
+    document.body.append(p)
+  }
+
+  scrollInit()
+
+  // 滚动事件
+  function scrollInit () {
+    window.addEventListener('scroll', () => {
+      let scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+      let scrollHeight = document.documentElement.scrollHeight
+      let clientHeight = document.documentElement.clientHeight
+      if ((scrollHeight - (scrollTop + clientHeight)) <= 50) {
+        appendP()
+      }
+    })
+  }
+</script>
+
+</body>
+</html>
