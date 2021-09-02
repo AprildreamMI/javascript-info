@@ -1,0 +1,26 @@
+<!doctype html>
+  <head>
+    <style>
+      body {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+<body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      alert("DOM ready!");
+    });
+  </script>
+
+  <script>
+    // 在样式表加载完成之前，脚本都不会执行
+    alert(getComputedStyle(document.body).marginTop);
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js"></script>
+
+  <script>
+    alert("Library loaded, inline script executed");
+  </script>
+</body>
