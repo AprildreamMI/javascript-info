@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<script>
+let newWindow = open('https://javascript.info', 'example', 'width=300,height=300')
+newWindow.focus();
+
+alert(newWindow.location.href); // (*) about:blank，加载尚未开始
+
+newWindow.onload = function() {
+  let html = `<div style="font-size:30px">Welcome!</div>`;
+  newWindow.document.body.insertAdjacentHTML('afterbegin', html);
+};
+</script>

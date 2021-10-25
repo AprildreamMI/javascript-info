@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .circle {
+      transition-property: width, height, margin-left, margin-top;
+      transition-duration: 2s;
+      position: fixed;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: red;
+      border-radius: 50%;
+
+      width: 0px;
+      height: 0px;
+      top: 0px;
+      left: 0px;
+
+      transition-property: width heigth;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="showCircle(150, 150, 200)">showCircle</button>
+
+  <div id="circle" class="circle"></div>
+
+  <script>
+    function showCircle(cx, cy, radius) {
+      circle.style.top = cx + 'px'
+      circle.style.left = cy + 'px'
+
+      circle.style.width = radius + 'px'
+      circle.style.height = radius + 'px'
+    }
+  </script>
+</body>
+</html>
